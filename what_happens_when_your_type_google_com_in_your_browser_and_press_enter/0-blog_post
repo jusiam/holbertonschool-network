@@ -1,0 +1,91 @@
+What Happens When You Type https://www.google.com in Your Browser and Press Enter?
+
+This seemingly simple action sets off a series of complex processes involving multiple systems and technologies. Understanding this workflow offers insights into the intricate web stack underlying the internet. Let’s dive into each step, focusing on key components such as DNS requests, TCP/IP, firewalls, HTTPS, load balancers, web servers, application servers, and databases.
+
+Step 1: DNS Request
+
+When you type https://www.google.com, your browser first determines the IP address corresponding to the domain name using the Domain Name System (DNS):
+
+Browser Cache: The browser checks its local cache for a recent DNS resolution of www.google.com.
+
+Operating System Cache: If not found, it queries the operating system’s DNS resolver.
+
+Recursive DNS Resolver: If the operating system lacks the answer, it contacts a recursive DNS resolver, often provided by your ISP or a third party like Google Public DNS.
+
+Root and TLD Servers: The resolver queries root DNS servers to find the Top-Level Domain (TLD) name server (e.g., .com). The TLD server directs the resolver to the authoritative name server for google.com.
+
+Authoritative Name Server: Finally, the authoritative server returns the IP address, such as 142.250.72.4.
+
+Step 2: Establishing a TCP/IP Connection
+
+With the IP address resolved, the browser initiates a connection to Google’s servers:
+
+TCP Handshake: The browser sends a SYN packet to Google’s server. The server responds with a SYN-ACK packet, and the browser replies with an ACK. This establishes a reliable connection.
+
+IP Protocol: This process uses the Internet Protocol (IP) to route packets across the internet. Routers guide packets between your computer and the server, ensuring data reaches the correct destination.
+
+Step 3: Navigating Firewalls
+
+Firewalls protect both client and server devices by inspecting and filtering traffic:
+
+Client-Side Firewall: Ensures outgoing requests comply with security rules.
+
+Server-Side Firewall: Protects Google’s infrastructure, allowing only legitimate traffic.
+
+Step 4: HTTPS and SSL/TLS
+
+Because the URL uses https://, a secure connection is established using SSL/TLS:
+
+SSL/TLS Handshake:
+
+The browser and server exchange cryptographic keys to agree on an encryption method.
+
+The server sends its SSL/TLS certificate to prove its identity.
+
+Once verified, the session is encrypted.
+
+Encryption: Ensures all data exchanged is secure and unreadable by third parties.
+
+Step 5: Load Balancer
+
+Google employs load balancers to handle the vast number of incoming requests:
+
+Traffic Distribution: The load balancer directs your request to one of many backend servers based on factors like server health and geographic proximity.
+
+Scalability: Ensures optimal performance by balancing traffic loads across multiple servers.
+
+Step 6: Web Server
+
+The load balancer routes your request to a web server:
+
+Processing Requests: The web server, such as Nginx or Apache, processes HTTP(S) requests and serves static assets (e.g., HTML, CSS, JavaScript).
+
+Forwarding Dynamic Requests: For dynamic content, the web server forwards the request to an application server.
+
+Step 7: Application Server
+
+The application server handles business logic and processes user-specific data:
+
+Dynamic Content: For example, if you’re logged into Google, the server customizes the response based on your profile.
+
+APIs and Services: The application server may communicate with other internal services or microservices to fetch necessary data.
+
+Step 8: Database Query
+
+If data retrieval is required, the application server queries the database:
+
+Database Server: High-performance databases like MySQL or Bigtable store structured and unstructured data.
+
+Query Optimization: The database server executes efficient queries to fetch the requested information.
+
+Step 9: Response Assembly and Rendering
+
+Response Compilation: The application server combines data from the database and formats it into a response (e.g., JSON or HTML).
+
+Browser Rendering: Once the browser receives the response, it parses the HTML, CSS, and JavaScript to render the web page.
+
+DOM Construction: The browser constructs the Document Object Model (DOM) and applies styles and scripts for interactivity.
+
+Conclusion
+
+This end-to-end journey of typing a URL and pressing Enter demonstrates the intricate coordination between DNS, network protocols, security mechanisms, servers, and databases. Each component plays a vital role in delivering a seamless and secure user experience. By understanding this process, you gain valuable insights into the inner workings of modern web technologies.
