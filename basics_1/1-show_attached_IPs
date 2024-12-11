@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
-# Script to display all active IPv4 IPs on the machine
+#Display all active IPv4 IPs on the machine
+# cannot be used as the task wants us to use ifconig --> ip -o -4 addr show
 
-ifconfig | grep -w 'inet' | awk '{print $2}'
+ifconfig | grep 'inet ' | awk '{print $2}'
